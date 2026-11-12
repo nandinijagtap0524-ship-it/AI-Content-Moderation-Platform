@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>ClearSpace | Content moderation</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="layout">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ClearSpace home">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span>clearspace</span>
+      </a>
+      <span class="status"><span class="status-dot"></span> Local demo</span>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">AI CONTENT SAFETY</p>
+      <h1 id="page-title">Make space for<br><span>better conversations.</span></h1>
+      <p class="intro-copy">Check a message for potentially harmful content. The classifier runs locally in this demo.</p>
+    </section>
+
+    <section class="moderation-card" aria-labelledby="analyze-title">
+      <div class="card-heading">
+        <div>
+          <p class="eyebrow">MESSAGE REVIEW</p>
+          <h2 id="analyze-title">Analyze text</h2>
+        </div>
+        <span class="model-badge"><span aria-hidden="true">✦</span> Naive Bayes</span>
+      </div>
+
+      <form id="moderation-form">
+        <label for="message">Paste a message to check</label>
+        <textarea id="message" name="message" maxlength="2000" placeholder="Type or paste text here..." required></textarea>
+        <div class="input-meta">
+          <span>Up to 2,000 characters</span>
+          <span id="char-count">0 / 2,000</span>
+        </div>
+        <button id="analyze-button" type="submit">
+          <span>Analyze message</span><span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <p id="error-message" class="error-message" role="alert" hidden></p>
+
+      <section id="result" class="result" aria-live="polite" hidden>
+        <div class="result-heading">
+          <div>
+            <p class="eyebrow">MODERATION RESULT</p>
+            <h2 id="result-category"></h2>
+          </div>
+          <span id="result-action" class="action-badge"></span>
+        </div>
+        <div class="confidence-row">
+          <span>Model confidence</span>
+          <strong id="confidence-value"></strong>
+        </div>
+        <div class="confidence-track" aria-hidden="true"><span id="confidence-bar"></span></div>
+        <div id="matched-terms-row" class="matched-row" hidden>
+          <span>Matched terms</span>
+          <div id="matched-terms" class="term-list"></div>
+        </div>
+        <p class="result-note">Automated predictions can be wrong. Use human review for important decisions.</p>
+      </section>
+    </section>
+
+    <section class="categories" aria-label="Categories checked">
+      <p class="eyebrow">CATEGORIES CHECKED</p>
+      <div class="category-list">
+        <span>Harassment</span><span>Hate</span><span>Violence</span>
+        <span>Sexual content</span><span>Self-harm</span>
+      </div>
+    </section>
+
+    <footer>
+      <span>ClearSpace · Educational prototype</span>
+      <span>Your text is processed locally and not saved.</span>
+    </footer>
+  </main>
+</body>
+</html>
